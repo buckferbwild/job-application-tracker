@@ -1,0 +1,42 @@
+[
+  {
+    "date": "2026-05-15",
+    "company": "Linear",
+    "role": "Product Engineer",
+    "location": "Remote",
+    "status": "interviewing",
+    "url": "https://linear.app/careers"
+  },
+  {
+    "date": "2026-05-12",
+    "company": "Anthropic",
+    "role": "Software Engineer, Product",
+    "location": "San Francisco, CA",
+    "status": "applied",
+    "url": "https://anthropic.com/careers"
+  },
+  {
+    "date": "2026-05-08",
+    "company": "Stripe",
+    "role": "Frontend Engineer",
+    "location": "New York, NY",
+    "status": "rejected",
+    "url": ""
+  },
+  {
+    "date": "2026-05-01",
+    "company": "Vercel",
+    "role": "Developer Advocate",
+    "location": "Remote",
+    "status": "offer",
+    "url": ""
+  },
+  {
+    "date": "2026-04-22",
+    "company": "Notion",
+    "role": "Full Stack Engineer",
+    "location": "San Francisco, CA",
+    "status": "ghosted",
+    "url": ""
+  }
+]

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300..800&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F4EFE6;
+  --bg-card: #FBF8F2;
+  --ink: #1C1917;
+  --ink-soft: #57534E;
+  --ink-faint: #A8A29E;
+  --rule: #E7E0D2;
+  --accent: #8B3A1F;
+  --applied: #4A6B8A;
+  --interview: #B8862D;
+  --offer: #4A6B3E;
+  --rejected: #9C5A5A;
+  --ghosted: #78716C;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 32px 96px;
+}
+
+header { margin-bottom: 56px; }
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.tagline {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  margin-top: 14px;
+  max-width: 480px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 48px;
+}
+
+.stat {
+  background: var(--bg-card);
+  padding: 24px 26px;
+}
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
+}
+
+.stat-value {
+  font-family: 'Fraunces', serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.stat-value .unit {
+  font-size: 1.1rem;
+  color: var(--ink-faint);
+  margin-left: 2px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.filter-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: all 0.18s;
+}
+
+.filter-btn:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.applications-list { list-style: none; }
+
+.app-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto;
+  gap: 24px;
+  align-items: center;
+  padding: 22px 4px;
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.18s, padding 0.18s;
+}
+
+.app-row:hover {
+  background: var(--bg-card);
+  padding-left: 12px;
+}
+
+.app-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+.app-main h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 1.45rem;
+  letter-spacing: -0.015em;
+  margin-bottom: 3px;
+}
+
+.app-main h3 a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.18s;
+}
+
+.app-main h3 a:hover { border-bottom-color: var(--accent); }
+
+.app-role {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.app-location {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  text-align: right;
+}
+
+.status-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 11px;
+  border-radius: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-applied { background: rgba(74, 107, 138, 0.13); color: var(--applied); }
+.status-interviewing { background: rgba(184, 134, 45, 0.15); color: var(--interview); }
+.status-offer { background: rgba(74, 107, 62, 0.15); color: var(--offer); }
+.status-rejected { background: rgba(156, 90, 90, 0.13); color: var(--rejected); }
+.status-ghosted { background: rgba(120, 113, 108, 0.13); color: var(--ghosted); }
+
+.empty {
+  text-align: center;
+  padding: 80px 20px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--ink-faint);
+  font-size: 1.2rem;
+}
+
+footer {
+  margin-top: 72px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 700px) {
+  .container { padding: 40px 20px 60px; }
+  .app-row {
+    grid-template-columns: 1fr auto;
+    gap: 10px 16px;
+  }
+  .app-date { grid-column: 1; grid-row: 1; }
+  .status-pill { grid-column: 2; grid-row: 1; }
+  .app-main { grid-column: 1 / -1; grid-row: 2; }
+  .app-location { grid-column: 1 / -1; grid-row: 3; text-align: left; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="eyebrow">Personal Tracker · v1.0</div>
+    <h1>Application <em>Ledger</em></h1>
+    <p class="tagline">A record of every door knocked on, kept honestly.</p>
+  </header>
+
+  <section class="stats" id="stats"></section>
+
+  <div class="controls" id="controls">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="applied">Applied</button>
+    <button class="filter-btn" data-filter="interviewing">Interviewing</button>
+    <button class="filter-btn" data-filter="offer">Offer</button>
+    <button class="filter-btn" data-filter="rejected">Rejected</button>
+    <button class="filter-btn" data-filter="ghosted">Ghosted</button>
+  </div>
+
+  <ul class="applications-list" id="list"></ul>
+
+  <footer>
+    Edit <span style="color:var(--ink-soft)">applications.json</span> to add or update entries · commit · push
+  </footer>
+</div>
+
+<script>
+let allApps = [];
+let currentFilter = 'all';
+
+async function load() {
+  try {
+    const res = await fetch('applications.json?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    allApps = await res.json();
+  } catch (e) {
+    document.getElementById('list').innerHTML =
+      '<li class="empty">Could not load applications.json. On GitHub Pages this will work automatically; locally, serve the folder with a tiny web server (e.g. <code style="font-family:JetBrains Mono,monospace">python3 -m http.server</code>).</li>';
+    return;
+  }
+  allApps.sort((a, b) => new Date(b.date) - new Date(a.date));
+  render();
+}
+
+function render() {
+  renderStats();
+  renderList();
+}
+
+function renderStats() {
+  const total = allApps.length;
+  const inProgress = allApps.filter(a => a.status === 'applied' || a.status === 'interviewing').length;
+  const offers = allApps.filter(a => a.status === 'offer').length;
+  const decided = allApps.filter(a => a.status === 'interviewing' || a.status === 'offer' || a.status === 'rejected').length;
+  const rate = total ? Math.round((decided / total) * 100) : 0;
+
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><div class="stat-label">Total Sent</div><div class="stat-value">${total}</div></div>
+    <div class="stat"><div class="stat-label">In Progress</div><div class="stat-value">${inProgress}</div></div>
+    <div class="stat"><div class="stat-label">Offers</div><div class="stat-value">${offers}</div></div>
+    <div class="stat"><div class="stat-label">Response Rate</div><div class="stat-value">${rate}<span class="unit">%</span></div></div>
+  `;
+}
+
+function renderList() {
+  const filtered = currentFilter === 'all' ? allApps : allApps.filter(a => a.status === currentFilter);
+  const list = document.getElementById('list');
+
+  if (filtered.length === 0) {
+    list.innerHTML = '<li class="empty">Nothing here yet.</li>';
+    return;
+  }
+
+  list.innerHTML = filtered.map(app => {
+    const d = new Date(app.date);
+    const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    const name = app.url
+      ? `<a href="${app.url}" target="_blank" rel="noopener">${escape(app.company)}</a>`
+      : escape(app.company);
+    return `
+      <li class="app-row">
+        <div class="app-date">${dateStr}</div>
+        <div class="app-main">
+          <h3>${name}</h3>
+          <div class="app-role">${escape(app.role || '')}</div>
+        </div>
+        <div class="app-location">${escape(app.location || '')}</div>
+        <div class="status-pill status-${app.status}">${app.status}</div>
+      </li>
+    `;
+  }).join('');
+}
+
+function escape(s) {
+  return String(s).replace(/[&<>"']/g, c =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+document.getElementById('controls').addEventListener('click', e => {
+  if (!e.target.classList.contains('filter-btn')) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  currentFilter = e.target.dataset.filter;
+  renderList();
+});
+
+load();
+</script>
+</body>
+</html>
