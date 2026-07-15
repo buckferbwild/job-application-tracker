@@ -1,42 +1,138 @@
 [
   {
-    "date": "2026-05-15",
-    "company": "Linear",
-    "role": "Product Engineer",
-    "location": "Remote",
-    "status": "interviewing",
-    "url": "https://linear.app/careers"
-  },
-  {
-    "date": "2026-05-12",
-    "company": "Anthropic",
-    "role": "Software Engineer, Product",
-    "location": "San Francisco, CA",
+    "date": "2026-07-05",
+    "company": "TikTok",
+    "role": "Unknown",
+    "location": "",
     "status": "applied",
-    "url": "https://anthropic.com/careers"
-  },
-  {
-    "date": "2026-05-08",
-    "company": "Stripe",
-    "role": "Frontend Engineer",
-    "location": "New York, NY",
-    "status": "rejected",
     "url": ""
   },
   {
-    "date": "2026-05-01",
-    "company": "Vercel",
-    "role": "Developer Advocate",
-    "location": "Remote",
-    "status": "offer",
+    "date": "2026-06-18",
+    "company": "Orange Logic",
+    "role": "Unknown",
+    "location": "",
+    "status": "applied",
     "url": ""
   },
   {
-    "date": "2026-04-22",
-    "company": "Notion",
-    "role": "Full Stack Engineer",
-    "location": "San Francisco, CA",
-    "status": "ghosted",
+    "date": "2026-05-24",
+    "company": "Technical Authentication & Grading (TAG)",
+    "role": "Customer Service Lead",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-20",
+    "company": "Insight Global",
+    "role": "Project Manager",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-20",
+    "company": "Karbon",
+    "role": "Implementation Specialist",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-20",
+    "company": "bolt",
+    "role": "Partner Success Specialist",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-18",
+    "company": "Xometry",
+    "role": "Unknown",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-17",
+    "company": "Technical Authentication & Grading (TAG)",
+    "role": "Unknown",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-17",
+    "company": "Medallion",
+    "role": "Unknown",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-17",
+    "company": "Insight Global",
+    "role": "Unknown",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-17",
+    "company": "Talkdesk",
+    "role": "Unknown",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-17",
+    "company": "Karbon",
+    "role": "Unknown",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-17",
+    "company": "Attentive",
+    "role": "Unknown",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-17",
+    "company": "bolt",
+    "role": "Unknown",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-17",
+    "company": "Prolific",
+    "role": "Unknown",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-05-07",
+    "company": "VioletX",
+    "role": "Unknown",
+    "location": "",
+    "status": "applied",
+    "url": ""
+  },
+  {
+    "date": "2026-04-25",
+    "company": "MrBeast",
+    "role": "Strategy Analyst",
+    "location": "",
+    "status": "applied",
     "url": ""
   }
 ]
